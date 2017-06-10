@@ -43,13 +43,13 @@ public class HelperUser extends SQLiteOpenHelper {
 
     public static final String TABLE_FAVORITES_CARS_USERS="favoritesCarsUsers";
     public static final String COLUMN_ID_USER = "idUser";
-    public static final String COLUMN_ID_BUS = "idBus";
+    public static final String COLUMN_ID_CAR = "idcar";
 
     public static final String TABLE_CREATE_FAVORITES =
             "CREATE TABLE " + TABLE_FAVORITES_CARS_USERS + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ID_USER + " INTEGER, " +
-                    COLUMN_ID_BUS + " INTEGER" +
+                    COLUMN_ID_CAR + " INTEGER" +
                     ")";
 
 

@@ -204,7 +204,7 @@ public class SearchFragment extends Fragment {
 
         Favorites favorites = new Favorites();
         favorites.setIdUser(LoginActivity.userLogin.getId());
-        favorites.setIdBus(SearchFragment.carFavorite.getId());
+        favorites.setIdCar(SearchFragment.carFavorite.getId());
          dataCar.createFavorites(favorites);
     }
 

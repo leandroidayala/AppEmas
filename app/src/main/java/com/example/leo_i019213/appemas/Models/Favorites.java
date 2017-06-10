@@ -5,7 +5,7 @@ public class Favorites {
 
     private long id;
     private long idUser;
-    private long idBus;
+    private long idCar;
     private  boolean check =false;
 
     public long getId() {
@@ -24,12 +24,12 @@ public class Favorites {
         this.idUser = idUser;
     }
 
-    public long getIdBus() {
-        return idBus;
+    public long getIdCar() {
+        return idCar;
     }
 
-    public void setIdBus(long idBus) {
-        this.idBus = idBus;
+    public void setIdCar(long idCar) {
+        this.idCar = idCar;
     }
 
     public boolean isCheck() {

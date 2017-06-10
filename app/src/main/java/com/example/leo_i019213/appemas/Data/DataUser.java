@@ -175,7 +175,7 @@ public class DataUser {
 
         ContentValues values = new ContentValues();
         values.put(HelperUser.COLUMN_ID_USER,favorites.getIdUser());
-        values.put(HelperUser.COLUMN_ID_BUS,favorites.getIdBus());
+        values.put(HelperUser.COLUMN_ID_CAR,favorites.getIdCar());
 
         long insertId = database.insert(HelperUser.TABLE_FAVORITES_CARS_USERS, null, values);
 
@@ -190,7 +190,7 @@ public class DataUser {
                 Favorites favorite = new Favorites();
                 favorite.setId(cursor.getLong(cursor.getColumnIndex(HelperUser.COLUMN_ID)));
                 favorite.setIdUser(cursor.getLong(cursor.getColumnIndex(HelperUser.COLUMN_ID_USER)));
-                favorite.setIdBus(cursor.getLong(cursor.getColumnIndex(HelperUser.COLUMN_ID_BUS)));
+                favorite.setIdCar(cursor.getLong(cursor.getColumnIndex(HelperUser.COLUMN_ID_CAR)));
                 favorites.add(favorite);
             }
         }
@@ -204,20 +204,20 @@ public class DataUser {
     }
 
     public List<Car> listFavorites(long idUser){
-        Cursor cursor = database.rawQuery("select t1.id,t1.route,t1.neighborhood from cars as t1 join favoritesCarsUsers as t2 on t1.id = t2.idBus where t2.idUser = "+idUser, null);
+        Cursor cursor = database.rawQuery("select t1.id,t1.route,t1.neighborhood from cars as t1 join favoritesCarsUsers as t2 on t1.id = t2.idCar where t2.idUser = "+idUser, null);
         List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 
-    public List<Car> listRouesBus(String route){
+    public List<Car> listRouesCar(String route){
         Cursor cursor = database.rawQuery("select * from cars where  route= '"+route+"'", null);
         List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 
-    public void deleteFavorites (Long idUser , Long idBus){
+    public void deleteFavorites (Long idUser , Long idCar){
         database.execSQL("delete from favoritesCarsUsers where  idUser = "+idUser+" and " +
-                " idBus = "+idBus+"");
+                " idCar = "+idCar+"");
     }
 
 }

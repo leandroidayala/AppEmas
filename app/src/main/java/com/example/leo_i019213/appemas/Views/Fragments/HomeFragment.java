@@ -127,7 +127,7 @@ public class HomeFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.id_item_menu_more_Information:
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                carRoutes = dataUser.listRouesBus(car.getRoute()) ;
+                carRoutes = dataUser.listRouesCar(car.getRoute()) ;
                 DialogoAlerta dialogo = new DialogoAlerta();
                 dialogo.show(fragmentManager, "tagAlerta");
                 return (true);
