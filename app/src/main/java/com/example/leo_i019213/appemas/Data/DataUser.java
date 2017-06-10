@@ -135,7 +135,7 @@ public class DataUser {
         values.put(HelperUser.COLUMN_ROUTE, car.getRoute());
         values.put(HelperUser.COLUMN_NEIGHBORHOD, car.getNeighborhood());
 
-        long insertId = database.insert(HelperUser.TABLE_BUSES, null, values);
+        long insertId = database.insert(HelperUser.TABLE_CARS, null, values);
 
         car.setId(insertId);
         return car;
@@ -157,13 +157,13 @@ public class DataUser {
     }
 
     public List<Car> findAllRoutes(){
-        Cursor cursor = database.rawQuery("select * from buses", null);
+        Cursor cursor = database.rawQuery("select * from cars", null);
         List<Car> routes = cursorToListRoute(cursor);
         return routes;
     }
 
     public List<Car> findRoutes(String route){
-        Cursor cursor = database.rawQuery("select * from buses where route ='"+route+"' or neighborhood = '"+route+"'", null);
+        Cursor cursor = database.rawQuery("select * from cars where route ='"+route+"' or neighborhood = '"+route+"'", null);
         List<Car> routes = cursorToListRoute(cursor);
         return routes;
     }
@@ -177,7 +177,7 @@ public class DataUser {
         values.put(HelperUser.COLUMN_ID_USER,favorites.getIdUser());
         values.put(HelperUser.COLUMN_ID_BUS,favorites.getIdBus());
 
-        long insertId = database.insert(HelperUser.TABLE_FAVORITES_BUSES_USERS, null, values);
+        long insertId = database.insert(HelperUser.TABLE_FAVORITES_CARS_USERS, null, values);
 
         favorites.setId(insertId);
         return favorites;
@@ -198,25 +198,25 @@ public class DataUser {
     }
 
     public List<Favorites> findAllFavorites(){
-        Cursor cursor = database.rawQuery("select * from favoritesBusesUsers", null);
+        Cursor cursor = database.rawQuery("select * from favoritesCarsUsers", null);
         List<Favorites> favorites = cursorToListFavorites(cursor);
         return favorites;
     }
 
     public List<Car> listFavorites(long idUser){
-        Cursor cursor = database.rawQuery("select t1.id,t1.route,t1.neighborhood from buses as t1 join favoritesBusesUsers as t2 on t1.id = t2.idBus where t2.idUser = "+idUser, null);
+        Cursor cursor = database.rawQuery("select t1.id,t1.route,t1.neighborhood from cars as t1 join favoritesCarsUsers as t2 on t1.id = t2.idBus where t2.idUser = "+idUser, null);
         List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 
     public List<Car> listRouesBus(String route){
-        Cursor cursor = database.rawQuery("select * from buses where  route= '"+route+"'", null);
+        Cursor cursor = database.rawQuery("select * from cars where  route= '"+route+"'", null);
         List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 
     public void deleteFavorites (Long idUser , Long idBus){
-        database.execSQL("delete from favoritesBusesUsers where  idUser = "+idUser+" and " +
+        database.execSQL("delete from favoritesCarsUsers where  idUser = "+idUser+" and " +
                 " idBus = "+idBus+"");
     }
 

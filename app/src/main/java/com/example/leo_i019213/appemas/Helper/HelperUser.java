@@ -30,23 +30,23 @@ public class HelperUser extends SQLiteOpenHelper {
                     COLUMN_STATUS + " TEXT" +
                     ")";
 
-    public static final String TABLE_BUSES = "buses";
+    public static final String TABLE_CARS = "cars";
     public static final String COLUMN_ROUTE = "route";
     public static final String COLUMN_NEIGHBORHOD = "neighborhood";
 
-    public static final String TABLE_CREATE_BUSES =
-            "CREATE TABLE " + TABLE_BUSES + " (" +
+    public static final String TABLE_CREATE_CARS =
+            "CREATE TABLE " + TABLE_CARS + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ROUTE + " TEXT, " +
                     COLUMN_NEIGHBORHOD + " TEXT" +
                     ")";
 
-    public static final String TABLE_FAVORITES_BUSES_USERS="favoritesBusesUsers";
+    public static final String TABLE_FAVORITES_CARS_USERS="favoritesCarsUsers";
     public static final String COLUMN_ID_USER = "idUser";
     public static final String COLUMN_ID_BUS = "idBus";
 
     public static final String TABLE_CREATE_FAVORITES =
-            "CREATE TABLE " + TABLE_FAVORITES_BUSES_USERS + " (" +
+            "CREATE TABLE " + TABLE_FAVORITES_CARS_USERS + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ID_USER + " INTEGER, " +
                     COLUMN_ID_BUS + " INTEGER" +
@@ -61,7 +61,7 @@ public class HelperUser extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
-        db.execSQL(TABLE_CREATE_BUSES);
+        db.execSQL(TABLE_CREATE_CARS);
         db.execSQL(TABLE_CREATE_FAVORITES);
         Log.i(LOGTAG, "Tabla de usuarios creada correctamente.");
     }
@@ -69,8 +69,8 @@ public class HelperUser extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_USERS);
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_BUSES);
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_FAVORITES_BUSES_USERS);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_CARS);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_FAVORITES_CARS_USERS);
         onCreate(db);
     }
 }
