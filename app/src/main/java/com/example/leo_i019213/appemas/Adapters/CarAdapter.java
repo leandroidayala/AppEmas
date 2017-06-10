@@ -48,7 +48,7 @@ public class CarAdapter extends BaseAdapter {
         ViewHolder viewHolder;
 
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.item_bus, parent, false);
+            convertView = layoutInflater.inflate(R.layout.item_route, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
 

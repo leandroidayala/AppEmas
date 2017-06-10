@@ -34,8 +34,8 @@ import java.util.List;
 public class SearchFragment extends Fragment {
 
     View view;
-    List<Car> busesList;
-    List<Car> busesFavorites;
+    List<Car> carList;
+    List<Car> carFavorites;
     public static DataUser dataCar;
     ListView listView;
     CarAdapter carAdapter;
@@ -47,7 +47,6 @@ public class SearchFragment extends Fragment {
 
 
     public SearchFragment() {
-        // Required empty public constructor
     }
 
 
@@ -58,17 +57,17 @@ public class SearchFragment extends Fragment {
         view=inflater.inflate(R.layout.fragment_search, container, false);
         showTolbar(getResources().getString(R.string.txt_title_toolbar_search),true);
         setHasOptionsMenu(true);
-        findBus = (EditText) view.findViewById(R.id.id_fragment_search_bus);
-        listView = (ListView) view.findViewById(R.id.id_fragment_list_buses);
-        btnFindBus = (Button) view.findViewById(R.id.id_btn_fragment_search_bus);
+        findBus = (EditText) view.findViewById(R.id.id_fragment_search_car);
+        listView = (ListView) view.findViewById(R.id.id_fragment_list_car);
+        btnFindBus = (Button) view.findViewById(R.id.id_btn_fragment_search_car);
         favoritesBus = (CheckBox) view.findViewById(R.id.id_item_chb_favorite);
 
         dataCar = new DataUser(getActivity());
         dataCar.open();
 
-        busesList = dataCar.findAllBuses();
+        carList = dataCar.findAllRoutes();
 
-        if (busesList.size()<=0) {
+        if (carList.size()<=0) {
             createData();
         }
 
@@ -76,37 +75,37 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 find= findBus.getText().toString();
-                busesList = dataCar.findBuses(find.toUpperCase());
-                busesFavorites = dataCar.listFavorites(LoginActivity.userLogin.getId());
+                carList = dataCar.findRoutes(find.toUpperCase());
+                carFavorites = dataCar.listFavorites(LoginActivity.userLogin.getId());
 
-                if (busesFavorites.size()<=0) {
+                if (carFavorites.size()<=0) {
 
-                    if (busesList.size() <= 0) {
+                    if (carList.size() <= 0) {
                         Toast.makeText(getActivity().getApplicationContext(), getString(R.string.txt_search_bus) + findBus.getText().toString(), Toast.LENGTH_SHORT).show();
                     } else {
-                        carAdapter = new CarAdapter(getActivity().getApplicationContext(), busesList);
+                        carAdapter = new CarAdapter(getActivity().getApplicationContext(), carList);
                         listView.setAdapter(carAdapter);
                     }
 
                 }else
                 {
-                    if (busesList.size() <= 0) {
+                    if (carList.size() <= 0) {
                         Toast.makeText(getActivity().getApplicationContext(), getString(R.string.txt_search_bus) + findBus.getText().toString(), Toast.LENGTH_SHORT).show();
                     } else {
 
-                        for (int i=0; i< busesList.size();i++){
+                        for (int i=0; i< carList.size();i++){
 
-                            for (int y=0; y< busesFavorites.size();y++){
+                            for (int y=0; y< carFavorites.size();y++){
 
-                                if(busesList.get(i).getId()==busesFavorites.get(y).getId()){
-                                    busesList.get(i).setCheck(true);
+                                if(carList.get(i).getId()==carFavorites.get(y).getId()){
+                                    carList.get(i).setCheck(true);
                                 }
 
                             }
 
                         }
 
-                        carAdapter = new CarAdapter(getActivity().getApplicationContext(), busesList);
+                        carAdapter = new CarAdapter(getActivity().getApplicationContext(), carList);
                         listView.setAdapter(carAdapter);
 
                     }
@@ -152,49 +151,49 @@ public class SearchFragment extends Fragment {
         car.setNeighborhood("Lorenzo 7AM -- 8AM \n" +
                 "Lorenzo 3PM -- 4AM \n" +
                 "Lorenzo 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R1");
         car.setNeighborhood("Chapal 7AM -- 8AM \n" +
                 "Chapal 3PM -- 4AM \n" +
                 "Chapal 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R1");
         car.setNeighborhood("Santa Mónica 7AM -- 8AM \n" +
                 "Santa Mónica 3PM -- 4AM \n" +
                 "Santa Mónica 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R2");
         car.setNeighborhood("Briceño 7AM -- 8AM \n" +
                 "Briceño 3PM -- 4AM \n" +
                 "Briceño 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R2");
         car.setNeighborhood("El Popular 7AM -- 8AM \n" +
                 "El Popular 3PM -- 4AM \n" +
                 "El Popular 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R2");
         car.setNeighborhood("Las Américas 7AM -- 8AM \n" +
                 "Las Américas 3PM -- 4AM \n" +
                 "Las Américas 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R3");
         car.setNeighborhood("El Praga 7AM -- 8AM \n" +
                 "El Praga 3PM -- 4AM \n" +
                 "El Praga 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
         car.setRoute("R4");
         car.setNeighborhood("Santiago 7AM -- 8AM \n" +
                 "Santiago 3PM -- 4AM \n" +
                 "Santiago 7PM -- 8PM ");
-        dataCar.createBus(car);
+        dataCar.createRoute(car);
 
 
 

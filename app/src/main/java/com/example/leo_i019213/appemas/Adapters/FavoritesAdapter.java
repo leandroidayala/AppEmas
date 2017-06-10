@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.leo_i019213.appemas.Models.Favorites;
+import com.example.leo_i019213.appemas.Models.Car;
 import com.example.leo_i019213.appemas.R;
 
 import java.util.ArrayList;
@@ -15,13 +15,14 @@ import java.util.List;
 
 ;
 
-public class FavoritesAdapter extends BaseAdapter{
 
-    List<Favorites> userList = new ArrayList<>();
+public class FavoritesAdapter extends BaseAdapter {
+
+    List<Car> userList = new ArrayList<>();
     LayoutInflater layoutInflater;
     Context context;
 
-    public FavoritesAdapter (Context context, List<Favorites> userList) {
+    public FavoritesAdapter(Context context, List<Car> userList) {
         this.context = context;
         this.userList = userList;
         layoutInflater = LayoutInflater.from(this.context);
@@ -32,7 +33,7 @@ public class FavoritesAdapter extends BaseAdapter{
     }
 
     @Override
-    public Favorites getItem(int position) {
+    public Car getItem(int position) {
         return userList.get(position);
     }
 
@@ -43,30 +44,31 @@ public class FavoritesAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ViewHolder viewHolder;
+
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.item, parent, false);
+            convertView = layoutInflater.inflate(R.layout.item_favorite, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
+
         }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Favorites favorit = getItem(position);
-        viewHolder.name.setText(String.valueOf(favorit.getIdUser()));
-        viewHolder.email.setText( String.valueOf(favorit.getIdBus()));
+        Car car = getItem(position);
+        viewHolder.route.setText(car.getRoute());
+        viewHolder.neighborhood.setText(car.getNeighborhood());
 
         return convertView;
     }
 
     public class ViewHolder{
-        TextView name;
-        TextView email;
+        TextView route;
+        TextView neighborhood;
 
         public ViewHolder(View item) {
-            name = (TextView) item.findViewById(R.id.id_item_name);
-            email = (TextView) item.findViewById(R.id.id_item_email);
+            route = (TextView) item.findViewById(R.id.id_item_favorite_route);
+            neighborhood = (TextView) item.findViewById(R.id.id_item_favorite_neighborhood);
         }
     }
 

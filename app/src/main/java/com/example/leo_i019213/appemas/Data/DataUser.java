@@ -85,7 +85,7 @@ public class DataUser {
         Cursor cursor = database.rawQuery("select username,password from users where username = '"+username+"' and " +
                 "password = '"+password+"'", null);
         if (cursor.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
+
             do {
                 findUser[0] = cursor.getString(0);
                 findUser[1] = cursor.getString(1);
@@ -114,7 +114,7 @@ public class DataUser {
 
         Cursor cursor = database.rawQuery("select * from users where status = 'true'", null);
         if (cursor.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
+
             do {
                 userLogin.setId(cursor.getLong(cursor.getColumnIndex(HelperUser.COLUMN_ID)));
                 userLogin.setName(cursor.getString(cursor.getColumnIndex(HelperUser.COLUMN_NAME)));
@@ -129,8 +129,8 @@ public class DataUser {
         return userLogin;
     }
 
-///  buses
-    public Car createBus(Car car){
+
+    public Car createRoute(Car car){
         ContentValues values = new ContentValues();
         values.put(HelperUser.COLUMN_ROUTE, car.getRoute());
         values.put(HelperUser.COLUMN_NEIGHBORHOD, car.getNeighborhood());
@@ -141,8 +141,8 @@ public class DataUser {
         return car;
     }
 
-    public List<Car> cursorToListBus(Cursor cursor){
-        List<Car> buses = new ArrayList<>();
+    public List<Car> cursorToListRoute(Cursor cursor){
+        List<Car> routes = new ArrayList<>();
         if (cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Car car = new Car();
@@ -150,26 +150,26 @@ public class DataUser {
                 car.setRoute(cursor.getString(cursor.getColumnIndex(HelperUser.COLUMN_ROUTE)));
                 car.setNeighborhood(cursor.getString(cursor.getColumnIndex(HelperUser.COLUMN_NEIGHBORHOD)));
 
-                buses.add(car);
+                routes.add(car);
             }
         }
-        return buses;
+        return routes;
     }
 
-    public List<Car> findAllBuses(){
+    public List<Car> findAllRoutes(){
         Cursor cursor = database.rawQuery("select * from buses", null);
-        List<Car> buses = cursorToListBus(cursor);
-        return buses;
+        List<Car> routes = cursorToListRoute(cursor);
+        return routes;
     }
 
-    public List<Car> findBuses(String findBus){
-        Cursor cursor = database.rawQuery("select * from buses where route ='"+findBus+"' or neighborhood = '"+findBus+"'", null);
-        List<Car> buses = cursorToListBus(cursor);
-        return buses;
+    public List<Car> findRoutes(String route){
+        Cursor cursor = database.rawQuery("select * from buses where route ='"+route+"' or neighborhood = '"+route+"'", null);
+        List<Car> routes = cursorToListRoute(cursor);
+        return routes;
     }
 
 
-    // favoritos
+
 
     public Favorites createFavorites(Favorites favorites){
 
@@ -205,13 +205,13 @@ public class DataUser {
 
     public List<Car> listFavorites(long idUser){
         Cursor cursor = database.rawQuery("select t1.id,t1.route,t1.neighborhood from buses as t1 join favoritesBusesUsers as t2 on t1.id = t2.idBus where t2.idUser = "+idUser, null);
-        List<Car> favorites = cursorToListBus(cursor);
+        List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 
     public List<Car> listRouesBus(String route){
         Cursor cursor = database.rawQuery("select * from buses where  route= '"+route+"'", null);
-        List<Car> favorites = cursorToListBus(cursor);
+        List<Car> favorites = cursorToListRoute(cursor);
         return favorites;
     }
 

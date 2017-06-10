@@ -9,7 +9,7 @@ import android.util.Log;
 public class HelperUser extends SQLiteOpenHelper {
 
     private static final String LOGTAG = "LOGTAG";
-    public static final String DATABASE_NAME = "users";
+    public static final String DATABASE_NAME = "emas.sqlite";
     private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_USERS = "users";

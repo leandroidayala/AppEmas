@@ -54,7 +54,7 @@
                             android:layout_height="wrap_content"
                             android:theme="@style/StyleTextInputBlue">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/id_fragment_search_bus"
+                                android:id="@+id/id_fragment_search_car"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/Ventana_search"
@@ -71,7 +71,7 @@
                         android:padding="0.5dp">
 
                         <Button
-                            android:id="@+id/id_btn_fragment_search_bus"
+                            android:id="@+id/id_btn_fragment_search_car"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:background="@mipmap/ic_launcher"/>
@@ -83,7 +83,7 @@
             </FrameLayout>
 
             <ListView
-                android:id="@+id/id_fragment_list_buses"
+                android:id="@+id/id_fragment_list_car"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </ListView>

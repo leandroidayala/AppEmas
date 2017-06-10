@@ -24,7 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.leo_i019213.appemas.Adapters.FavoriteBusAdapter;
+import com.example.leo_i019213.appemas.Adapters.FavoritesAdapter;
 import com.example.leo_i019213.appemas.Data.DataUser;
 import com.example.leo_i019213.appemas.LoginActivity;
 import com.example.leo_i019213.appemas.Models.Car;
@@ -43,14 +43,14 @@ public class HomeFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     ListView listaFavor;
     DataUser dataUser;
-    FavoriteBusAdapter adapterFavorites;
+    FavoritesAdapter adapterFavorites;
     List<Car> carList;
-    static List<Car> busesRoutes;
+    static List<Car> carRoutes;
     Car car;
 
 
     public HomeFragment() {
-        // Required empty public constructor
+
 
     }
 
@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
+
         view=inflater.inflate(R.layout.fragment_home, container, false);
         listaFavor = (ListView) view.findViewById(R.id.id_lv_fovorites);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.id_fragment_home_swipe);
@@ -68,13 +68,13 @@ public class HomeFragment extends Fragment {
 
 
         showTolbar(getResources().getString(R.string.txt_title_toolbar_Container_home),true);
-        setHasOptionsMenu(true); // para poder poner toolbar  en fragmento
+        setHasOptionsMenu(true);
 
 
         carList = dataUser.listFavorites(LoginActivity.userLogin.getId());
         if (carList.size()<=0) Toast.makeText(getActivity().getApplicationContext(), getString(R.string.txt_field_favorites), Toast.LENGTH_SHORT).show();
         else {
-            adapterFavorites = new FavoriteBusAdapter(getActivity().getApplicationContext(), carList);
+            adapterFavorites = new FavoritesAdapter(getActivity().getApplicationContext(), carList);
             listaFavor.setAdapter(adapterFavorites);
             registerForContextMenu(listaFavor);
         }
@@ -127,13 +127,13 @@ public class HomeFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.id_item_menu_more_Information:
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                busesRoutes = dataUser.listRouesBus(car.getRoute()) ;
+                carRoutes = dataUser.listRouesBus(car.getRoute()) ;
                 DialogoAlerta dialogo = new DialogoAlerta();
                 dialogo.show(fragmentManager, "tagAlerta");
                 return (true);
             case  R.id.id_item_menu_favorite:
                 dataUser.deleteFavorites(LoginActivity.userLogin.getId(), car.getId());
-                adapterFavorites = new FavoriteBusAdapter(getActivity().getApplicationContext(), carList);
+                adapterFavorites = new FavoritesAdapter(getActivity().getApplicationContext(), carList);
                 listaFavor.setAdapter(adapterFavorites);
                 registerForContextMenu(listaFavor);
                 Toast.makeText(getActivity().getApplicationContext(), getString(R.string.txt_descart_favorite) + car.getRoute(), Toast.LENGTH_SHORT).show();
@@ -150,7 +150,7 @@ public class HomeFragment extends Fragment {
                 carList = dataUser.listFavorites(LoginActivity.userLogin.getId());
                 if (carList.size()<=0) Toast.makeText(getActivity().getApplicationContext(),getString(R.string.txt_field_favorites), Toast.LENGTH_SHORT).show();
                 else {
-                    adapterFavorites = new FavoriteBusAdapter(getActivity().getApplicationContext(), carList);
+                    adapterFavorites = new FavoritesAdapter(getActivity().getApplicationContext(), carList);
                     listaFavor.setAdapter(adapterFavorites);
                     registerForContextMenu(listaFavor);
                 }
@@ -163,11 +163,11 @@ public class HomeFragment extends Fragment {
 
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-            final String[] items= new String[busesRoutes.size()];
+            final String[] items= new String[carRoutes.size()];
 
-            for (int i=0;i<busesRoutes.size();i++ )
+            for (int i=0;i<carRoutes.size();i++ )
             {
-                items[i]=busesRoutes.get(i).getNeighborhood();
+                items[i]=carRoutes.get(i).getNeighborhood();
             }
 
             AlertDialog.Builder builder =
@@ -181,7 +181,7 @@ public class HomeFragment extends Fragment {
                     })
                     .setItems(items, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
-                            Log.i("Dialogos", "Opción elegida: " + busesRoutes.get(item).getRoute());
+                            Log.i("Dialogos", "Opción elegida: " + carRoutes.get(item).getRoute());
                         }
                     });
 

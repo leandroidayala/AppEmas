@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">AppEmas</string>
+
+    <!--
     <string name="username">User</string>
     <string name="password">Password</string>
     <string name="txt_login">Login</string>
@@ -19,9 +21,9 @@
     <string name="str_tab_profile">Profile</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="txt_title_toolbar_Container">Transport SIT</string>
+    <string name="txt_title_toolbar_Container">Garbage collection</string>
     <string name="str_btn_profile_route">Rutas</string>
     <string name="str_btn_profile_picks">Fotos</string>
     <string name="txt_title_toolbar_profile">Profile</string>
@@ -36,25 +38,18 @@
     <string name="txt_succesfully_account">Account Successfully Created</string>
     <string name="txt_sign_off">Closing Session</string>
     <string name="btn_fragment_profile_sign_off">Sign off</string>
-    <string name="txt_title_toolbar_search">Search your route</string>
-    <string name="name_user">Pedro Campos</string>
-    <string name="str_profile_Info">SIT user, current residence in San Juan de Pasto in the neighborhood Panoramico</string>
-    <string name="info_profile2">PROFESSION OR OFFICE: Student of Systems Engineer at IU Cesmag</string>
-    <string name="str_profile_data">Personal information</string>
-    <string name="info_profile_born">DATE OF BIRTH: March 25, 1997</string>
-    <string name="info_profile_Route">ROUTE OF PREFERENCE: C15</string>
-    <string name="info_city">CITY OF ORIGIN: San Juan de Pasto</string>
-    <string name="info_profile_photo">Photos</string>
+    <string name="txt_title_toolbar_search"> Collection routes</string>
+    <string name="name_user">*****</string>
     <string name="Ventana_search">Search</string>
     <string name="Info_Search">GARBAGE COLLECTION</string>
-    <string name="txt_home_info">SIT system users</string>
+    <string name="txt_home_info">*******</string>
     <string name="info_profile_email">******</string>
     <string name="str_fragment_profile_email">Email:</string>
     <string name="str_itm_route">Route</string>
     <string name="str_itm_neighborhood">Neighborhood</string>
     <string name="txt_search_bus">Searching</string>
     <string name="item_favorites_menu_desmarcar">Remove favorite</string>
-    <string name="item_favorites_menu_more_information"> More Bus Information </string>
+    <string name="item_favorites_menu_more_information"> Sugerences </string>
     <string name="str_itm_favorite_route">Route</string>
     <string name="str_itm_favorite_neighborhood">Neighborhood</string>
     <string name="txt_title_toolbar_Container_home">Favorites Routes</string>
@@ -64,7 +59,7 @@
     <string name="txt_route_search">Route:</string>
     <string name="txt_neighborhood_routes_search"> - Neighborhoods: </string>
     <string name="txt_check_true"> Marked as Favorite </string>
-    <string name="txt_check_false"> Stop being Favorite </string>
+    <string name="txt_check_false"> Stop being Favorite </string>  -->
 
 
 </resources>
